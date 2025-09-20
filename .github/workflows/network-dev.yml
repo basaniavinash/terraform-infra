@@ -11,11 +11,21 @@ jobs:
   plan:
     if: github.event_name == 'pull_request'
     uses: bar-private-org/reusable-workflows/.github/workflows/terraform-plan-apply.yml@main
-    with: { workdir: terraform-infra/infra/network/dev, apply: false }
+    with:
+      {
+        workdir: terraform-infra/infra/network/dev,
+        apply: false,
+        aws_region: "${{ vars.aws_region }}",
+      }
     secrets: inherit
 
   apply:
     if: github.event_name == 'push'
     uses: bar-private-org/reusable-workflows/.github/workflows/terraform-plan-apply.yml@main
-    with: { workdir: terraform-infra/infra/network/dev, apply: true }
+    with:
+      {
+        workdir: terraform-infra/infra/network/dev,
+        apply: true,
+        aws_region: "${{ var.aws_region }}",
+      }
     secrets: inherit

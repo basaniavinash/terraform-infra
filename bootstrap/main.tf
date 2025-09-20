@@ -97,6 +97,17 @@ module "iam_github_terraform" {
   managed_policy_arns = ["arn:aws:iam::aws:policy/PowerUserAccess"]
 }
 
+resource "aws_ecr_repository" "url-shortener" {
+  name = "url-shortener-service"
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+  encryption_configuration {
+    encryption_type = "AES256"
+  }
+  tags = { env = "url-shortener" }
+}
+
 output "tf_state_bucket" {
   value = aws_s3_bucket.tf_state.id
 }

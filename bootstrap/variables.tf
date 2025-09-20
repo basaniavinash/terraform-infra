@@ -15,10 +15,10 @@ variable "tf_lock_table" {
 
 variable "gha_ecr_subjects" {
   type    = list(string)
-  default = ["repo:bar-private-org/url-shortener-service:ref:refs/head/main"]
+  default = ["repo:bar-private-org/url-shortener-service:ref:refs/heads/main"]
 }
 
 variable "gha_tf_subjects" {
   type    = list(string)
-  default = ["repo:bar-private-org/url-shortener-service:ref:refs/head/main"]
+  default = ["repo:bar-private-org/url-shortener-service:ref:refs/heads/main"]
 }
